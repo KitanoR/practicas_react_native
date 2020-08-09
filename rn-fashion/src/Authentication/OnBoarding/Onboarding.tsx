@@ -6,7 +6,7 @@ import Subslide from "./Subslide";
 import Dot from "./Dot";
 import Animated, { multiply, divide, interpolate, Extrapolate } from "react-native-reanimated";
 import { StackNavigationProps, Routes } from "../../components/Navigation";
-import { useTheme, makeStyles, Theme } from "../../components/Theme";
+import { useTheme } from "../../components/Theme";
 
 const { width } = Dimensions.get("window");
 
@@ -166,7 +166,7 @@ const OnBoarding = ({ navigation }: StackNavigationProps<Routes, "OnBoarding">) 
 export default OnBoarding;
 
 
-const styles = makeStyles((theme: Theme) => ({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "white"
@@ -176,25 +176,25 @@ const styles = makeStyles((theme: Theme) => ({
     },
     slider: {
         height: SLIDE_HEIGHT,
-        borderBottomRightRadius: theme.borderRadii.xl
+        borderBottomRightRadius: 75
     },
     footerContainer: { 
         flex: 1, 
         backgroundColor: "white", 
-        borderTopLeftRadius: theme.borderRadii.xl
+        borderTopLeftRadius: 75
     },
     underline: {
         ...StyleSheet.absoluteFillObject,
         alignItems: "center",
         justifyContent: "flex-end",
-        borderBottomRightRadius: theme.borderRadii.xl,
+        borderBottomRightRadius: 75,
         overflow: "hidden"
     },
     pagination: { 
         ...StyleSheet.absoluteFillObject,
-        height: theme.borderRadii.xl, 
+        height: 75, 
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center"
     }
-}));
+})
