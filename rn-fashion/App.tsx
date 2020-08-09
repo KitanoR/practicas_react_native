@@ -6,10 +6,11 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 // rutas
 import { AuteticationNavigator } from './src/Authentication';
 //Settings
-import { LoadAssets, theme } from './src/components';
+import { LoadAssets } from './src/components';
 
 // components custom 
 import { ThemeProvider } from '@shopify/restyle';
+import { theme } from './src/components/Theme';
 
 
 const fonts = {

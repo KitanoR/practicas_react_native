@@ -1,15 +1,13 @@
 import React from 'react';
-import { Image, StyleSheet, Dimensions,  } from 'react-native';
-import theme, { Box } from './Theme';
+import { Image } from 'react-native';
+import { Box } from './Theme';
 
-const { width } = Dimensions.get("window");
 
 // iconos
 const GOOGLE = require('./assets/social/google.png');
 const FACEBOOK = require('./assets/social/facebook.png');
 const TWITTER = require('./assets/social/twitter.png');
-interface SocialLoginProps {
-}
+
 
 interface SocialIconProps {
     imagen: string;
@@ -46,8 +44,6 @@ const SocialLogin = () => {
     )
 }
 
-const styles = StyleSheet.create({
-  
-})
+
 
 export default SocialLogin;

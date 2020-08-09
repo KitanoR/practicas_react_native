@@ -1,12 +1,12 @@
 import React, {  useRef } from "react";
 import { View, StyleSheet, Dimensions, Image } from "react-native";
-import {  onScrollEvent, interpolateColor, useScrollHandler } from 'react-native-redash';
+import {  interpolateColor, useScrollHandler } from 'react-native-redash';
 import Slide, { SLIDE_HEIGHT } from "./Slide";
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 import Animated, { multiply, divide, interpolate, Extrapolate } from "react-native-reanimated";
-import { theme } from "../../components";
 import { StackNavigationProps, Routes } from "../../components/Navigation";
+import { useTheme, makeStyles, Theme } from "../../components/Theme";
 
 const { width } = Dimensions.get("window");
 
@@ -61,14 +61,15 @@ const slides = [
         }
     },
 ]
-const BORDER_RADIUS = theme.borderRadii.xl;
 
 const OnBoarding = ({ navigation }: StackNavigationProps<Routes, "OnBoarding">) => {
+    const theme = useTheme();
+    const BORDER_RADIUS = theme.borderRadii.xl;
+
     const { scrollHandler, x } = useScrollHandler();
 
     const scroll = useRef<Animated.ScrollView>(null);
     // Todo: use scrollEvent
-    const onScroll = onScrollEvent({ x });
 
     const backgroundColor = interpolateColor( x , {
         inputRange: slides.map((_, i) => i * width),
@@ -165,7 +166,7 @@ const OnBoarding = ({ navigation }: StackNavigationProps<Routes, "OnBoarding">) 
 export default OnBoarding;
 
 
-const styles = StyleSheet.create({
+const styles = makeStyles((theme: Theme) => ({
     container: {
         flex: 1,
         backgroundColor: "white"
@@ -175,25 +176,25 @@ const styles = StyleSheet.create({
     },
     slider: {
         height: SLIDE_HEIGHT,
-        borderBottomRightRadius: BORDER_RADIUS
+        borderBottomRightRadius: theme.borderRadii.xl
     },
     footerContainer: { 
         flex: 1, 
         backgroundColor: "white", 
-        borderTopLeftRadius: BORDER_RADIUS
+        borderTopLeftRadius: theme.borderRadii.xl
     },
     underline: {
         ...StyleSheet.absoluteFillObject,
         alignItems: "center",
         justifyContent: "flex-end",
-        borderBottomRightRadius: BORDER_RADIUS,
+        borderBottomRightRadius: theme.borderRadii.xl,
         overflow: "hidden"
     },
     pagination: { 
         ...StyleSheet.absoluteFillObject,
-        height: BORDER_RADIUS, 
+        height: theme.borderRadii.xl, 
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center"
     }
-})
+}));

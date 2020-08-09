@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Image, StyleSheet, Dimensions, StatusBar } from 'react-native';
-import theme, { Box } from './Theme';
+import { Box, makeStyles, Theme } from './Theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get("window");
@@ -54,12 +54,15 @@ const Container = ({ children, footer }: ContainerProps) => {
     )
 }
 
-const styles = StyleSheet.create({
+const styles = makeStyles((theme: Theme) => ({
     pattern: {
         width,
         height,
         borderBottomLeftRadius: theme.borderRadii.xl,
     }
-})
+
+}));
+
+
 
 export default Container;

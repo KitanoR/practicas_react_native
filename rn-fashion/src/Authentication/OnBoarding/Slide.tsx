@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions, Image, ImageRequireSource } from "react-native";
+import { View, StyleSheet, Dimensions, ImageRequireSource } from "react-native";
 import { Text } from '../../components';
 const { width, height } = Dimensions.get("window");
 
@@ -9,13 +9,13 @@ export const BORDER_RADIUS = 75;
 interface SlideProps {
     title: string;
     right?: boolean;
-    picture: {
+    picture?: {
         src: ImageRequireSource;
         width: number;
         height: number;
     };
 }
-const Slide = ({ title, right, picture }: SlideProps) => {
+const Slide = ({ title, right }: SlideProps) => {
     const transform = [
         { translateY: (SLIDE_HEIGHT - 100) / 2},
         { translateX: right ? (width /2 - 50) : (-width / 2 + 50)},

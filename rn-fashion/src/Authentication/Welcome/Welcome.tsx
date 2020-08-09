@@ -1,7 +1,8 @@
 import React from 'react';
 import { Image, Dimensions } from 'react-native';
-import  { theme, Button, Box, Text  } from '../../components';
+import  { Button, Box, Text  } from '../../components';
 import { Routes, StackNavigationProps } from '../../components/Navigation';
+import { useTheme } from '../../components/Theme';
 
 const { width } = Dimensions.get("window");
 const picture = {
@@ -11,6 +12,7 @@ const picture = {
 }
 
 export default ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
+    const theme = useTheme();
     return(
         <Box flex={1} backgroundColor="white">
             <Box 
